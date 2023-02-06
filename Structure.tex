@@ -1,0 +1,213 @@
+\usepackage{graphicx}   
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{multicol}  % Support for Multiple Columns
+\usepackage{multirow}
+\usepackage{listings}  % make code looks nicer
+\usepackage{amsmath} % for \hookrightarrow
+%\usepackage{xcolor}   % for \textcolor
+\usepackage{microtype}
+\usepackage{colordvi}
+\usepackage{rotating} % used to rotate the pictures   % not used anymore
+
+\usepackage{longtable}
+\usepackage{tikz}
+\usepackage{pdfpages}  % not used any more
+\usepackage{pdflscape} 
+\usepackage{array}  
+\usepackage{listings}
+\lstset{
+	basicstyle=\small\ttfamily,
+	columns=flexible,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red} {$\hookrightarrow$}\space}
+}
+
+
+\usepackage{wasysym} % some symbols Like Telephone
+\usepackage{amssymb} % need for the Box command
+\usepackage{versions}
+\usepackage[letterpaper]{geometry}
+\geometry{verbose,
+	tmargin=1.5in,bmargin=1in,lmargin=1in,rmargin=1in, marginparwidth=0.5in,
+	headheight=1in,headsep=0.5in,footskip=0.5in}
+%\geometry{verbose,tmargin=1.5in,bmargin=1.5in,lmargin=2in,rmargin=1in,headheight=1in,headsep=0.5in,footskip=1in}
+
+%% Migrate to Arial font for cleaner look.
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+
+\renewcommand{\numberline}[1]{#1~}  % The chapter number does not jumble up in the toc.
+\usepackage{fontspec}
+\setmainfont{B612}
+\setsansfont{B612}
+\setmonofont{B612 Mono}
+
+
+\usepackage[unicode=true,
+bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,  linktoc=all,
+breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=page,colorlinks=false]
+{hyperref}
+
+\usepackage{attachfile2}
+\attachfilesetup{icon=Paperclip}
+
+% custom chapter begin
+\usepackage{titlesec}
+
+\usepackage{makeidx} % for indexing
+
+\usepackage{tocloft} % used for custom toc.
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc}
+
+\usepackage{anyfontsize}
+
+\usepackage{longtable}
+\usepackage{datatool}
+\usepackage{booktabs}
+
+\usepackage{progressbar}
+% for fun
+\usepackage{tikz}
+\usetikzlibrary{decorations.text}
+% end for fun
+
+\usepackage{anyfontsize}
+
+\usepackage{fontawesome5}
+
+
+\renewcommand{\numberline}[1]{#1~}  % The chapter number does not jumble up in the toc.
+
+
+
+\titleformat{\chapter}[block]
+{\normalfont\huge\bfseries}{\thechapter}{20pt}{}
+\titlespacing*{\chapter}
+{0pt}{20pt}{20pt}
+% custom chapter end
+
+
+%%%  LET us have a nice box for todo and info
+\usepackage[most]{tcolorbox} % for use in Colored box
+
+\newcommand{\mytodo}[1] { 
+	\begin{tcolorbox}[colback=yellow!5!white,colframe=red!75!black]
+		\index{todo} #1
+	\end{tcolorbox}	
+}
+
+\newcommand{\myinfo}[1] { 
+	%	\begin{tcolorbox}[colback=yellow!2!white,colframe=yellow!90!black]
+	\begin{tcolorbox}[colback=yellow,colframe=black]
+		#1
+	\end{tcolorbox}	
+}
+
+
+\newcommand{\myblackbox}[1] { 
+	\begin{tcolorbox}[colback=black,colframe=white,coltext=white]
+		#1
+	\end{tcolorbox}	
+}
+
+
+
+\usepackage[framemethod=tikz]{mdframed} % Allows defining custom boxed/framed environments
+\mdfdefinestyle{info}{%
+	topline=false, bottomline=false,
+	leftline=false, rightline=false,
+	nobreak,
+	singleextra={%
+		\fill[black](P-|O)circle[radius=0.4em];
+		\node at(P-|O){\color{white}\scriptsize\bf i};
+		\draw[very thick](P-|O)++(0,-0.8em)--(O);%--(O-|P);
+	}
+}
+% Define a custom environment for information
+\newenvironment{info}[1][Info:]{ % Set the default title to "Info:"
+	\medskip
+	\begin{mdframed}[style=info]
+		\noindent{\textbf{#1}}
+	}{
+	\end{mdframed}
+}
+
+\newcommand{\Minutes}[2][\today]{
+	\begin{tcolorbox}[colback=gray!15!white,colframe=black,coltext=black, title=#1]
+		#2
+	\end{tcolorbox}	
+	
+}
+
+
+%----------------------------------------------------------------------------------------
+%	FILE CONTENTS ENVIRONMENT
+%----------------------------------------------------------------------------------------
+
+% Usage:
+% \begin{file}[optional filename, defaults to "File"]
+%	File contents, for example, with a listings environment
+% \end{file}
+
+\mdfdefinestyle{file}{
+	innertopmargin=1.6\baselineskip,
+	innerbottommargin=0.8\baselineskip,
+	topline=false, bottomline=false,
+	leftline=false, rightline=false,
+	leftmargin=1cm,
+	rightmargin=1cm,
+	singleextra={%
+		\draw[fill=black!10!white](P)++(0,-1.2em)rectangle(P-|O);
+		\node[anchor=north west]
+		at(P-|O){\ttfamily\mdfilename};
+		%
+		\def\l{3em}
+		\draw(O-|P)++(-\l,0)--++(\l,\l)--(P)--(P-|O)--(O)--cycle;
+		\draw(O-|P)++(-\l,0)--++(0,\l)--++(\l,0);
+	},
+	nobreak,
+}
+
+% Define a custom environment for file contents
+\newenvironment{file}[1][File]{ % Set the default filename to "File"
+	\medskip
+	\newcommand{\mdfilename}{#1}
+	\begin{mdframed}[style=file]
+	}{
+	\end{mdframed}
+	\medskip
+}
+
+
+
+
+
+
+\widowpenalty=300
+\clubpenalty=300
+
+
+%%% Compact Enumerations/bullets
+\usepackage{enumitem}
+\setitemize{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setlist[description]{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+\setenumerate{noitemsep,topsep=0pt,parsep=0pt,partopsep=0pt}
+
+
+
+
+%\usepackage{pagecolor}
+%\pagecolor{black}
+%\color{green!50!white}
+
+\definecolor{MyWhite}{RGB}{255,255,255}
+\definecolor{MyBlue} {RGB} {25,49,227}
+\definecolor{MyOrange} {RGB} {204,51,51}
+\definecolor{MyGreen} {RGB} {33,177,75}
+

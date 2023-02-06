@@ -1,0 +1,86 @@
+\documentclass[openany, onesided] {book}
+%\documentclass[openany, onesided]{mcp-acm}
+
+\include{Structure}
+%\usepackage[dvipsnames]{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{calc}
+
+
+
+
+% Should this be Guide Book or Field Book or just Notes
+\hypersetup{pdftitle={Murali Narayanan},
+ pdfauthor={Murali Narayanan},
+ pdfkeywords={MN}}
+
+% clear all the default
+\fancyfoot{}
+\fancyhead{}
+
+% Setup the Left, Center, Right, Even and Odd page headers and footer
+\fancyhead[LE] { \nouppercase { \leftmark } } 
+%\fancyhead[CO,CE]{\includegraphics[width=2.5cm]{dxc_logo.png}}
+\fancyhead[RO] { \rightmark } 
+%\fancyhead[LO,RE] {\bfseries AWS Migration} 
+\fancyhead[LO,RE]{\includegraphics[width=2.5cm]{images/logo6.png}}
+
+
+\fancyfoot[LO,RE] {\bfseries \today}
+\fancyfoot[CO,CE] {\bfseries MN }
+\fancyfoot[RO,LE] {Page: \thepage} 
+
+% Change header and footer rule width
+\renewcommand{\headrulewidth}{0.9pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% set page style
+\pagestyle{fancy}
+%\pagecolor{brown!10}  %Give the pages an antique color instead of plain white
+
+\input{glossaries}
+\makeindex
+
+\begin{document}
+%\frontmatter
+
+%	\title{PA XIX \\ AWS Migration }
+
+%\date{}
+%\maketitle
+\pagestyle{empty}
+\includegraphics[height=0.98\textheight]{CoverPage.pdf}
+
+\pagebreak
+
+\pagenumbering{roman} 
+\setcounter{page}{1} 
+\setcounter{tocdepth}{1}
+\pagestyle{fancy}
+
+
+\pagenumbering{roman}
+\setcounter{page}{1}
+\setcounter{tocdepth}{1}
+\pagestyle{fancy}
+
+\tableofcontents 
+\clearpage
+\listoftables
+\clearpage
+\listoffigures
+
+\mainmatter
+\pagenumbering{arabic}
+
+\include{Abstract}
+
+
+\printindex
+\printglossary
+\include{BackPage}
+
+\end{document}
+ 
