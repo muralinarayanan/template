@@ -1,8 +1,6 @@
 \documentclass[openany, onesided] {book}
-%\documentclass[openany, onesided]{mcp-acm}
 
 \include{Structure}
-%\usepackage[dvipsnames]{xcolor}
 
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric}
@@ -22,9 +20,7 @@
 
 % Setup the Left, Center, Right, Even and Odd page headers and footer
 \fancyhead[LE] { \nouppercase { \leftmark } } 
-%\fancyhead[CO,CE]{\includegraphics[width=2.5cm]{dxc_logo.png}}
 \fancyhead[RO] { \rightmark } 
-%\fancyhead[LO,RE] {\bfseries AWS Migration} 
 \fancyhead[LO,RE]{\includegraphics[width=2.5cm]{images/logo6.png}}
 
 
@@ -43,18 +39,15 @@
 \input{glossaries}
 \makeindex
 
+% Beginning of the document
 \begin{document}
-%\frontmatter
 
-%	\title{PA XIX \\ AWS Migration }
-
-%\date{}
-%\maketitle
+% separate the cover page into it's own source and just include the pdf file here.  Set the pagestyle to empty, so it won't have page numbers, etc.,
 \pagestyle{empty}
 \includegraphics[height=0.98\textheight]{CoverPage.pdf}
-
 \pagebreak
 
+% Initial pages will all have roman page numbers i,ii,iii, ...
 \pagenumbering{roman} 
 \setcounter{page}{1} 
 \setcounter{tocdepth}{1}
@@ -66,20 +59,26 @@
 \setcounter{tocdepth}{1}
 \pagestyle{fancy}
 
+% print the TOC, tables and figures list (comment out if not needed)
 \tableofcontents 
 \clearpage
 \listoftables
 \clearpage
 \listoffigures
 
+% start of the main matter. Change the page number style back to arabic 1,2,3, ...
 \mainmatter
 \pagenumbering{arabic}
 
 \include{Abstract}
 
+\include{Chapter1}
 
+% Print Index and Glossary.  Remember to run corresponding makes
 \printindex
 \printglossary
+
+% Include a backpage
 \include{BackPage}
 
 \end{document}
